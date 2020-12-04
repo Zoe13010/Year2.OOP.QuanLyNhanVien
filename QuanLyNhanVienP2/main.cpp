@@ -1,12 +1,25 @@
 #include "QuanLyNhanVien.h"
 
-void QLNV_Them(QuanLyNhanVien*);
-void QLNV_Sua(QuanLyNhanVien*);
-void QLNV_Xoa(QuanLyNhanVien*);
-void QLNV_HienThiThongTin(QuanLyNhanVien*);
-void QLNV_TimKiemTheoTen(QuanLyNhanVien*);
-void QLNV_XuatDanhSach(QuanLyNhanVien*);
-void QLNV_SapXepTheoLuong(QuanLyNhanVien*);
+template <class T>
+void QLNV_Them(QuanLyNhanVien<T>*);
+
+template <class T>
+void QLNV_Sua(QuanLyNhanVien<T>*);
+
+template <class T>
+void QLNV_Xoa(QuanLyNhanVien<T>*);
+
+template <class T>
+void QLNV_HienThiThongTin(QuanLyNhanVien<T>*);
+
+template <class T>
+void QLNV_TimKiemTheoTen(QuanLyNhanVien<T>*);
+
+template <class T>
+void QLNV_XuatDanhSach(QuanLyNhanVien<T>*);
+
+template <class T>
+void QLNV_SapXepTheoLuong(QuanLyNhanVien<T>*);
 
 int main() {
 	int mode = -1;
@@ -15,7 +28,7 @@ int main() {
 	cout << "Nhap ten nguoi quan ly: ";
 	cin.ignore();
 	getline(cin, tempString);
-	QuanLyNhanVien* dbnv = new QuanLyNhanVien(tempString);
+	QuanLyNhanVien<NhanVien>* dbnv = new QuanLyNhanVien<NhanVien>(tempString);
 
 	do {
 		cout << endl;
@@ -64,7 +77,8 @@ int main() {
 	return 0;
 }
 
-void QLNV_Them(QuanLyNhanVien* input) {
+template <class T>
+void QLNV_Them(QuanLyNhanVien<T>* input) {
 	try {
 		input->Them();
 	}
@@ -73,12 +87,14 @@ void QLNV_Them(QuanLyNhanVien* input) {
 	}
 }
 
-void QLNV_Sua(QuanLyNhanVien* input) {
+template <class T>
+void QLNV_Sua(QuanLyNhanVien<T>* input) {
 	cout << "Vui long chon chi muc cua nhan vien can sua: ";
 	int index; cin >> index;
 	try {
 		// dbnv[index].
 		// TODO: Sua tai day!
+		input->Sua(index);
 	}
 	catch (string ex) {
 		cout << "Loi khi sua!" << endl;
@@ -86,7 +102,8 @@ void QLNV_Sua(QuanLyNhanVien* input) {
 	}
 }
 
-void QLNV_Xoa(QuanLyNhanVien* input) {
+template <class T>
+void QLNV_Xoa(QuanLyNhanVien<T>* input) {
 	cout << "Vui long chon chi muc cua nhan vien can xoa: ";
 	int index; cin >> index;
 	try {
@@ -99,12 +116,12 @@ void QLNV_Xoa(QuanLyNhanVien* input) {
 	}
 }
 
-void QLNV_HienThiThongTin(QuanLyNhanVien* input) {
+template <class T>
+void QLNV_HienThiThongTin(QuanLyNhanVien<T>* input) {
 	cout << "Vui long chon chi muc cua nhan vien can hien thi: ";
 	int index; cin >> index;
 	try {
 		// TODO: cout << *dbnv[index];
-		cout << &input[index];
 		// cout << &dbnv[index];
 	}
 	catch (string ex) {
@@ -112,7 +129,8 @@ void QLNV_HienThiThongTin(QuanLyNhanVien* input) {
 	}
 }
 
-void QLNV_TimKiemTheoTen(QuanLyNhanVien* input) {
+template <class T>
+void QLNV_TimKiemTheoTen(QuanLyNhanVien<T>* input) {
 	cout << "Vui long nhap ten cua nguoi muon tim kiem: ";
 	string timKiem; cin >> timKiem;
 	try {
@@ -123,7 +141,8 @@ void QLNV_TimKiemTheoTen(QuanLyNhanVien* input) {
 	}
 }
 
-void QLNV_XuatDanhSach(QuanLyNhanVien* input) {
+template <class T>
+void QLNV_XuatDanhSach(QuanLyNhanVien<T>* input) {
 	try {
 		cout << *input << endl;
 	}
@@ -132,7 +151,8 @@ void QLNV_XuatDanhSach(QuanLyNhanVien* input) {
 	}
 }
 
-void QLNV_SapXepTheoLuong(QuanLyNhanVien* input) {
+template <class T>
+void QLNV_SapXepTheoLuong(QuanLyNhanVien<T>* input) {
 	try {
 		cout << "Chon cach sap xep:" << endl;
 		cout << "  1: Tang dan" << endl;
