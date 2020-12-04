@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Directory
+QuanLyNhanVienP2/x64/*
+QuanLyNhanVienP2/x86/*
+QuanLyNhanVienP2/Debug/*
+x64/*
+x86/*
+Debug/*
