@@ -4,18 +4,23 @@
 
 using namespace std;
 
-static bool TangDan(NhanVien& a, NhanVien& b) {
+template <class T>
+static bool TangDan(T& a, T& b) {
 	return a.LayLuong() > b.LayLuong();
 }
 
-static bool GiamDan(NhanVien& a, NhanVien& b) {
+template <class T>
+static bool GiamDan(T& a, T& b) {
 	return a.LayLuong() < b.LayLuong();
 }
 
-static void HoanDoi(NhanVien& a, NhanVien& b) {
-	NhanVien* d = &a;
-	a = b;
-	b = *d;
+template <class T>
+static void HoanDoi(T& a, T& b) {
+	// T* d = new T(a);
+	// d.Next = a.Next;
+	// d.Previous = a.Previous;
+	// a = b;
+	// b = *d;
 }
 
 template <class T>
@@ -34,7 +39,7 @@ public:
 	void Xoa(int);
 
 	// Information: Cac tinh nang thay doi du lieu cua QuanLyNhanVien.
-	void SapXepTheoLuong(bool (*SortType)(NhanVien&, NhanVien&));
+	void SapXepTheoLuong(bool (*SortType)(T&, T&));
 	template <class U>
 	friend ostream& operator<<(ostream& cout, QuanLyNhanVien<U>& input);
 	void Sua(int);
@@ -171,17 +176,17 @@ unsigned int QuanLyNhanVien<T>::LaySoLuong() {
 
 // Undone: QuanLyNhanVien - Sap xep theo luong.
 template <class T>
-void QuanLyNhanVien<T>::SapXepTheoLuong(bool (*SortType)(NhanVien&, NhanVien&)) {
+void QuanLyNhanVien<T>::SapXepTheoLuong(bool (*SortType)(T&, T&)) {
 	if (this->SoLuong == 1)
 		return;
 	else {
 		int i, j;
-		for (i = (this->SoLuong - 1); i >= 0; i--) {
-			for (j = 1; j <= i; j++) {
+		for (i = 0; i < (int)this->SoLuong; i++) {
+			for (j = i + 1; j < (int)this->SoLuong; j++) {
 				// TODO: Sap xep tai day!
 				// TODO: Lay gia tri tai mang.
-				//  if (SortType((this[j-1], this[j]))
-				//  	HoanDoi(this[j-1], this[j]);
+				if (SortType(this->operator[](i), this->operator[](j)))
+					HoanDoi(this->operator[](i), this->operator[](j));
 			}
 		}
 	}
@@ -204,6 +209,9 @@ template <class T>
 T& QuanLyNhanVien<T>::operator[] (int i) {
 	NhanVien* nhanVien = this->Data;
 	int index = i;
+
+	if (index + 1 > (int)this->SoLuong)
+		throw string("Da vuot qua chi so cho phep cua mang! Vui long su dung 'LaySoLuong()' de tim do dai mang.");
 
 	while (index != 0) {
 		if (nhanVien == NULL)

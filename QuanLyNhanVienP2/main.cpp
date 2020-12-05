@@ -26,7 +26,7 @@ int main() {
 		cout << "2: Sua nhan vien" << endl;
 		cout << "3: Xoa nhan vien" << endl;
 		cout << "4: Hien thi thong tin nhan vien" << endl;
-		cout << "5: Tim kiem nhan vien" << endl;
+		cout << "5: Tim kiem nhan vien dau tien tim duoc" << endl;
 		cout << "6: Xuat toan bo danh sach" << endl;
 		cout << "7: Sap xep danh sach theo tien luong" << endl;
 		cout << "0: Thoat chuong trinh" << endl << endl;
