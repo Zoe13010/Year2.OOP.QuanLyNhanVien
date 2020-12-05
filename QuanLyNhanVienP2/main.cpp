@@ -18,6 +18,7 @@ int main() {
 	QuanLyNhanVien<NhanVien>* dbnv = new QuanLyNhanVien<NhanVien>(tempString);
 
 	do {
+		mode = -1;
 		cout << endl;
 		cout << "============= Quan ly nhan vien =============" << endl;
 		cout << "So luong hien tai: " << dbnv->LaySoLuong() << endl << endl;
@@ -102,7 +103,7 @@ void QLNV_HienThiThongTin(QuanLyNhanVien<NhanVien>* input) {
 	cout << "Vui long chon chi muc cua nhan vien can hien thi: ";
 	int index; cin >> index;
 	try {
-		cout << input[index];
+		cout << input->operator[](index);
 	}
 	catch (string ex) {
 		cout << ex << endl;
@@ -113,7 +114,7 @@ void QLNV_TimKiemTheoTen(QuanLyNhanVien<NhanVien>* input) {
 	cout << "Vui long nhap ten cua nguoi muon tim kiem: ";
 	string timKiem; cin >> timKiem;
 	try {
-		cout << input->TimKiemTheoTen(timKiem);
+		cout << input->operator[](input->TimKiemTheoTen(timKiem)) << endl;
 	}
 	catch (string ex) {
 		cout << ex << endl;

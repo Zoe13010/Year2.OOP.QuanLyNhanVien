@@ -6,8 +6,8 @@ using namespace std;
 class NhanVienHD : public NhanVien {
 	double LuongCongNhat;
 	void CapNhatTienLuong();
-	ostream& stdcout(ostream&);
-	istream& stdcin(istream&);
+	virtual ostream& stdcout(ostream&);
+	virtual istream& stdcin(istream&);
 public:
 	~NhanVienHD(void);
 	NhanVienHD(void);

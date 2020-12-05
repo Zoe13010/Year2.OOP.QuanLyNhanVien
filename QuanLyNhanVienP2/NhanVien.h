@@ -33,3 +33,13 @@ public:
 	friend istream& operator>>(istream&, NhanVien&);
 	NhanVien& operator=(const NhanVien&);
 };
+
+// ostream& NhanVien::stdcout(ostream& cout) {
+// 	cout << "Ham nay khong co gi ca!" << endl;
+// 	return cout;
+// }
+// 
+// istream& NhanVien::stdcin(istream& cin) {
+// 	cout << "Ham nay khong co gi ca!" << endl;
+// 	return cin;
+// }

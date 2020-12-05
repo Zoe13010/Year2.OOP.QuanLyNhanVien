@@ -42,7 +42,7 @@ public:
 	// Information: Cac tinh nang truy van du lieu cua QuanLyNhanVien.
 	int TimKiemTheoTen(string);
 	unsigned int LaySoLuong();
-	T operator[] (int i);
+	T& operator[] (int i);
 };
 
 template <class T>
@@ -201,7 +201,7 @@ ostream& operator<<(ostream& cout, QuanLyNhanVien<T>& input) {
 }
 
 template <class T>
-T QuanLyNhanVien<T>::operator[] (int i) {
+T& QuanLyNhanVien<T>::operator[] (int i) {
 	NhanVien* nhanVien = this->Data;
 	int index = i;
 
@@ -214,7 +214,7 @@ T QuanLyNhanVien<T>::operator[] (int i) {
 		}
 	}
 
-	return NhanVien(nhanVien);
+	return *nhanVien;
 }
 
 template <class T>
