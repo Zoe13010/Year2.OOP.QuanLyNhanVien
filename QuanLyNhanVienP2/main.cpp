@@ -143,12 +143,17 @@ void QLNV_SapXepTheoLuong(QuanLyNhanVien<NhanVien>* input) {
 		cout << "Chon cach sap xep:" << endl;
 		cout << "  1: Tang dan" << endl;
 		cout << "  2: Giam dan" << endl;
+		cout << "  0: Thoat" << endl;
 		cout << "Chon: ";
 		int index; cin >> index;
 		if (index == 1)
 			input->SapXepTheoLuong(TangDan);
 		else if (index == 2)
 			input->SapXepTheoLuong(GiamDan);
+		else if (index == 0)
+		{
+			return;
+		}
 		else throw string("Ban da nhap sai yeu cau!\nHay vao lai menu va thu lai.\n");
 	}
 	catch (string ex) {

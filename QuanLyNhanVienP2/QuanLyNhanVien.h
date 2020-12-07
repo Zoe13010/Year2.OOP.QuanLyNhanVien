@@ -119,13 +119,13 @@ LoaiNhanVien:
 		cout << "Nhap loai nhan vien:" << endl;
 		cout << "  1: Nhan vien hop dong" << endl;
 		cout << "  2: Nhan vien bien che" << endl;
-		cout << "  3: Quay lai" << endl;
+		cout << "  0: Quay lai" << endl;
 		cout << "Chon: ";
 		cin >> d;
 		if ((d == 1) || (d == 2)) {
 			goto ThongTinNhanVien;
 		}
-		else if (d == 3) {
+		else if (d == 0) {
 			goto End;
 		}
 		else throw string("Ban da nhap sai yeu cau. Vui long thu lai!");
