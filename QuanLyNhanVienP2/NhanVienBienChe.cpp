@@ -116,9 +116,9 @@ void NhanVienBC::SuaHeSoLuong(double heSoLuong) {
 	this->CapNhatTienLuong();
 }
 
+// Undone: Nhan vien bien che - Tinh tham nien lam viec
+// Undone: Nhan vien bien che - Cap nhat tien luong
 void NhanVienBC::CapNhatTienLuong() {
-	// TODO: Cap nhat tham nien lam viec tai day!
-	// TODO: Cap nhat luong tai day!
 	this->SuaLuong(0);
 }
 
@@ -137,4 +137,8 @@ NhanVienBC& NhanVienBC::operator=(NhanVienBC& input) {
 	this->SuaGioiTinh(input.GioiTinh);
 	this->SuaHeSoLuong(input.HeSoLuong);
 	return *this;
+}
+
+string NhanVienBC::GetClassType() {
+	return "NVBC";
 }

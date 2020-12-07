@@ -29,6 +29,7 @@ public:
 	bool LayGioiTinh();
 	void SuaGioiTinh(bool);
 	double LayLuong();
+	virtual string GetClassType() = 0;
 	friend ostream& operator<<(ostream&, NhanVien&);
 	friend istream& operator>>(istream&, NhanVien&);
 	NhanVien& operator=(const NhanVien&);

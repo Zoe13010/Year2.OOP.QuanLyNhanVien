@@ -142,3 +142,7 @@ NhanVienHD& NhanVienHD::operator=(NhanVienHD& input) {
 	this->SuaLuongCongNhat(input.LuongCongNhat);
 	return *this;
 }
+
+string NhanVienHD::GetClassType() {
+	return "NVHD";
+}

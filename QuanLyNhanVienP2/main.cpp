@@ -20,6 +20,7 @@ int main() {
 	do {
 		mode = -1;
 		cout << endl;
+		cout << typeid(dbnv).name() << endl;
 		cout << "============= Quan ly nhan vien =============" << endl;
 		cout << "So luong hien tai: " << dbnv->LaySoLuong() << endl << endl;
 		cout << "1: Them nhan vien" << endl;
