@@ -32,7 +32,9 @@ ostream& NhanVienHD::stdcout(ostream& cout) {
 	cout << "  Gioi tinh: " << (GioiTinh ? "Nu" : "Nam") << endl;
 	cout << "  Ngay vao viec: " << this->NgayVaoViec << endl;
 	cout << "  Luong cong nhat: " << this->LuongCongNhat << endl;
-	cout << "  Luong: " << this->Luong << endl;
+	cout << "  Luong: ";
+	cout.precision(30);
+	cout << this->Luong << endl;
 	cout << endl;
 	return cout;
 }
@@ -141,4 +143,8 @@ NhanVienHD& NhanVienHD::operator=(NhanVienHD& input) {
 	this->SuaGioiTinh(input.GioiTinh);
 	this->SuaLuongCongNhat(input.LuongCongNhat);
 	return *this;
+}
+
+string NhanVienHD::GetClassType() {
+	return "NVHD";
 }

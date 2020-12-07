@@ -1,4 +1,5 @@
 #pragma once
+#include <ctime>
 #include <iostream>
 #include <string>
 
@@ -26,3 +27,11 @@ public:
 	friend ostream& operator<<(ostream&, Date&);
 	Date& operator=(const Date&);
 };
+
+/// <summary>
+/// Lay ngay hien tai.
+/// </summary>
+/// <returns></returns>
+Date Now();
+
+int YearBetween2Date(Date date1, Date date2);

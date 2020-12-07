@@ -16,6 +16,7 @@ public:
 	NhanVienBC(const NhanVienBC&);
 	double LayHeSoLuong();
 	void SuaHeSoLuong(double);
+	virtual string GetClassType();
 	friend ostream& operator<<(ostream& cout, NhanVienBC& input);
 	friend istream& operator>>(istream& cin, NhanVienBC& input);
 	NhanVienBC& operator=(NhanVienBC&);
