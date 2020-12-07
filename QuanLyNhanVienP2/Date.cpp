@@ -127,3 +127,29 @@ Date& Date::operator=(const Date& input) {
 	this->Ngay = input.Ngay;
 	return *this;
 }
+
+Date Now() {
+	struct tm newtime;
+	time_t now = time(0);
+	localtime_s(&newtime, &now);
+	return Date(newtime.tm_mday, newtime.tm_mon + 1, newtime.tm_year + 1900);
+}
+
+int YearBetween2Date(Date date1, Date date2) {
+	if (date1.LayNam() > date2.LayNam())
+		if (date1.LayThang() > date2.LayThang())
+			if (date1.LayNgay() > date2.LayNgay()) {
+				Date temp = date1;
+				date1 = date2;
+				date2 = temp;
+			}
+
+	int result = date2.LayNam() - date1.LayNam();
+	if (date2.LayThang() < date1.LayThang())
+		result -= 1;
+	else if (date2.LayThang() == date1.LayThang())
+		if (date2.LayNgay() < date1.LayNgay())
+			result -= 1;
+
+	return result;
+}

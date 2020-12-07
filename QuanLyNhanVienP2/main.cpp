@@ -1,3 +1,9 @@
+#ifdef __cplusplus__
+#include <cstdlib>
+#else
+#include <stdlib.h>
+#endif
+
 #include "QuanLyNhanVien.h"
 
 void QLNV_Them(QuanLyNhanVien<NhanVien>*);
@@ -16,11 +22,12 @@ int main() {
 	cin.ignore();
 	getline(cin, tempString);
 	QuanLyNhanVien<NhanVien>* dbnv = new QuanLyNhanVien<NhanVien>(tempString);
+	Date ngayHienTai = Now();
 
 	do {
 		mode = -1;
 		cout << endl;
-		cout << typeid(dbnv).name() << endl;
+		cout << "Ngay hien tai: " << ngayHienTai << endl << endl;
 		cout << "============= Quan ly nhan vien =============" << endl;
 		cout << "So luong hien tai: " << dbnv->LaySoLuong() << endl << endl;
 		cout << "1: Them nhan vien" << endl;

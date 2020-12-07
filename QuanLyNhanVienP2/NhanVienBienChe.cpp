@@ -33,7 +33,9 @@ ostream& NhanVienBC::stdcout(ostream& cout) {
 	cout << "  Ngay vao viec: " << this->NgayVaoViec << endl;
 	cout << "  He so luong: " << this->HeSoLuong << endl;
 	cout << "  Tham nien lam viec: " << this->ThamNienLamViec << endl;
-	cout << "  Luong: " << this->Luong << endl;
+	cout << "  Luong: ";
+	cout.precision(30);
+	cout << this->Luong << endl;
 	cout << endl;
 	return cout;
 }
@@ -69,7 +71,9 @@ EnterName:
 	}
 
 EnterDate:
-	cin >> this->NgayVaoViec;
+	Date tempDate;
+	cin >> tempDate;
+	this->SuaNgayVaoViec(tempDate);
 	goto EnterGender;
 
 EnterGender:
@@ -116,10 +120,14 @@ void NhanVienBC::SuaHeSoLuong(double heSoLuong) {
 	this->CapNhatTienLuong();
 }
 
-// Undone: Nhan vien bien che - Tinh tham nien lam viec
-// Undone: Nhan vien bien che - Cap nhat tien luong
 void NhanVienBC::CapNhatTienLuong() {
-	this->SuaLuong(0);
+	int year = YearBetween2Date(this->NgayVaoViec, Now());
+	double hesophu = 0;
+	if (year > 5)
+		hesophu = (double)year / (double)100;
+	this->ThamNienLamViec = (double)year + hesophu;
+
+	this->SuaLuong((this->HeSoLuong * 1390000) * ((double)1 + this->ThamNienLamViec));
 }
 
 ostream& operator<<(ostream& cout, NhanVienBC& input) {
