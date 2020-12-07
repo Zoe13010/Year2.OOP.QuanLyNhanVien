@@ -41,6 +41,8 @@ public:
 	template <class U>
 	friend ostream& operator<<(ostream& cout, QuanLyNhanVien<U>& input);
 
+	QuanLyNhanVien<T>& operator=(const QuanLyNhanVien&);
+
 	/// <summary>
 	/// Sap xep danh sach Quan Ly Nhan Vien. 
 	/// </summary>
@@ -348,3 +350,54 @@ void QuanLyNhanVien<T>::HoanDoi(int i, int j) {
 	this->Gan(i, tempB);
 }
 
+template <class T>
+QuanLyNhanVien<T>& QuanLyNhanVien<T>::operator=(const QuanLyNhanVien<T>& input) {
+	this->TenCaNhan = input.TenCaNhan;
+	this->SoLuong = input.SoLuong;
+
+	NhanVien* data = input.Data;
+	
+	if (data->GetClassType() == "NVHD") {
+		NhanVienHD* temp2 = (NhanVienHD*)data;
+		this->Data = new NhanVienHD(temp2->LayID(),
+									temp2->LayTen(),
+									temp2->LayNgayVaoViec(),
+									temp2->LayGioiTinh(),
+									temp2->LayLuongCongNhat());
+	}
+	else {
+		NhanVienBC* temp2 = (NhanVienBC*)data;
+		this->Data = new NhanVienBC(temp2->LayID(),
+									temp2->LayTen(),
+									temp2->LayNgayVaoViec(),
+									temp2->LayGioiTinh(),
+									temp2->LayHeSoLuong());
+	}
+
+	data = data->Next;
+	NhanVien* dataThis = this->Data;
+
+	while (data != NULL) {
+		if (data->GetClassType() == "NVHD") {
+			NhanVienHD* temp2 = (NhanVienHD*)data;
+			dataThis->Next = new NhanVienHD(temp2->LayID(),
+				temp2->LayTen(),
+				temp2->LayNgayVaoViec(),
+				temp2->LayGioiTinh(),
+				temp2->LayLuongCongNhat());
+		}
+		else {
+			NhanVienBC* temp2 = (NhanVienBC*)data;
+			dataThis->Next = new NhanVienBC(temp2->LayID(),
+				temp2->LayTen(),
+				temp2->LayNgayVaoViec(),
+				temp2->LayGioiTinh(),
+				temp2->LayHeSoLuong());
+		}
+		dataThis->Next->Previous = dataThis;
+		data = data->Next;
+		dataThis = dataThis->Next;
+	}
+
+	return *this;
+}

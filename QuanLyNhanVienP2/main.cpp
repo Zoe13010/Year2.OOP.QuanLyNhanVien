@@ -69,6 +69,9 @@ int main() {
 		}
 	} while (mode != 0);
 
+	QuanLyNhanVien<NhanVien>* temp = new QuanLyNhanVien<NhanVien>(tempString);
+	*temp = *dbnv;
+
 	delete dbnv;
 	return 0;
 }
